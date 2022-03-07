@@ -1,0 +1,13 @@
+<h1>Months</h1>
+
+<ul>
+  <% @future_months.each do |future_month| %>
+    <% unless future_month.archived? %>
+      <li>
+        <%= link_to future_month.title, future_month %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<%= link_to "New Month", new_future_month_path %>

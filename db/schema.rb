@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_07_155805) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_07_175230) do
+  create_table "expected_expenses", force: :cascade do |t|
+    t.string "title"
+    t.string "amount"
+    t.integer "future_month_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "status"
+    t.index ["future_month_id"], name: "index_expected_expenses_on_future_month_id"
+  end
+
+  create_table "expected_incomes", force: :cascade do |t|
+    t.string "title"
+    t.string "amount"
+    t.string "earner"
+    t.integer "future_month_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "status"
+    t.index ["future_month_id"], name: "index_expected_incomes_on_future_month_id"
+  end
+
   create_table "expenses", force: :cascade do |t|
     t.string "title"
     t.string "amount"
@@ -19,6 +40,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_07_155805) do
     t.datetime "updated_at", null: false
     t.string "status"
     t.index ["month_id"], name: "index_expenses_on_month_id"
+  end
+
+  create_table "future_months", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "status"
   end
 
   create_table "incomes", force: :cascade do |t|
@@ -39,6 +67,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_07_155805) do
     t.string "status"
   end
 
+  add_foreign_key "expected_expenses", "future_months"
+  add_foreign_key "expected_incomes", "future_months"
   add_foreign_key "expenses", "months"
   add_foreign_key "incomes", "months"
 end

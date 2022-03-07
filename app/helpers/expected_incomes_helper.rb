@@ -1,0 +1,2 @@
+module ExpectedIncomesHelper
+end

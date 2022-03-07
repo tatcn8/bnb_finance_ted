@@ -1,0 +1,23 @@
+<p>
+  <strong>Income:</strong>
+  <%= expected_income.title %>
+</p>
+
+<p>
+  <strong>Income:</strong>
+  <%= expected_income.amount %>
+</p>
+
+<p>
+  <strong>Income:</strong>
+  <%= expected_income.earner %>
+</p>
+
+<p>
+  <ul>
+    <li><%= link_to "Delete", [expected_income.future_month, expected_income], data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+              } %></li>
+  </ul>
+</p>
