@@ -4,7 +4,7 @@ class IncomesController < ApplicationController
         @income = @month.incomes.create(income_params)
         redirect_to month_path(@month)
       end
-    
+      
       def destroy
         @month = Month.find(params[:month_id])
         @income = @month.incomes.find(params[:id])

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  root to: 'pages#home'
+  
   get 'months/index'
-  root "months#index"
+  # root "months#index"
 
   get "home/index"
   

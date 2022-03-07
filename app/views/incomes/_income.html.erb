@@ -14,8 +14,10 @@
 </p>
 
 <p>
-  <%= link_to "Delete Income", [income.month, income], data: {
+  <ul>
+    <li><%= link_to "Delete", [income.month, income], data: {
                 turbo_method: :delete,
                 turbo_confirm: "Are you sure?"
-              } %>
+              } %></li>
+  </ul>
 </p>

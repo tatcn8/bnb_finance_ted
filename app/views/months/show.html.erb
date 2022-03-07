@@ -1,7 +1,6 @@
 <h1><%= @month.title %></h1>
 
 <ul>
-  <li><%= link_to "Home", root_path %></li>
   <li><%= link_to "Edit", edit_month_path(@month) %></li>
   <li><%= link_to "Delete", month_path(@month), data: {
                     turbo_method: :delete,
