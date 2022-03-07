@@ -1,0 +1,16 @@
+<p>
+  <strong>Expense:</strong>
+  <%= expense.title %>
+</p>
+
+<p>
+  <strong>Expense:</strong>
+  <%= expense.amount %>
+</p>
+
+<p>
+  <%= link_to "Delete Expense", [expense.month, expense], data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+              } %>
+</p>

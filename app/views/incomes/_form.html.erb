@@ -1,0 +1,24 @@
+<%= form_with model: [ @month, @month.incomes.build ] do |form| %>
+    <p>
+      <%= form.label :title %><br>
+      <%= form.text_field :title %>
+    </p>
+    <p>
+        <%= form.label :amount %><br>
+        <%= form.text_field :amount %>
+    </p>
+     <p>
+        <%= form.label :earner %><br>
+        <%= form.text_field :earner %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+    <p>
+        <%= form.label :status %><br>
+        <%= form.select :status, ['public', 'private', 'archived'],
+    selected: 'public' %>
+    </p>
+
+  <% end %>
+  

@@ -1,0 +1,22 @@
+<h1><%= @month.title %></h1>
+
+<ul>
+  <li><%= link_to "Home", root_path %></li>
+  <li><%= link_to "Edit", edit_month_path(@month) %></li>
+  <li><%= link_to "Delete", month_path(@month), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>
+
+<h2>Income</h2>
+<%= render @month.incomes %>
+
+<h2>Add an Income:</h2>
+<%= render 'incomes/form' %>
+
+<h2>Expenses</h2>
+<%= render @month.expenses %>
+
+<h2>Add an expense:</h2>
+<%= render 'expenses/form' %>

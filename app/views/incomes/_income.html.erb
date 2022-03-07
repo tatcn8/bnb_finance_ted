@@ -1,0 +1,21 @@
+<p>
+  <strong>Income:</strong>
+  <%= income.title %>
+</p>
+
+<p>
+  <strong>Income:</strong>
+  <%= income.amount %>
+</p>
+
+<p>
+  <strong>Income:</strong>
+  <%= income.earner %>
+</p>
+
+<p>
+  <%= link_to "Delete Income", [income.month, income], data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+              } %>
+</p>
