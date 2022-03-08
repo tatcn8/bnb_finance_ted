@@ -1,4 +1,7 @@
 class FutureMonthsController < ApplicationController
+  before_action :authenticate_user! 
+  before_action :correct_user, except: [:new, :index, :create]
+
   def index
     @future_months = FutureMonth.all
   end
@@ -8,11 +11,13 @@ class FutureMonthsController < ApplicationController
   end
 
   def new
-    @future_month = FutureMonth.new
+    # @future_month = FutureMonth.new
+    @future_month = current_user.future_months.build
   end
 
   def create
-    @future_month = FutureMonth.new(future_month_params)
+    # @future_month = FutureMonth.new(future_month_params)
+    @future_month = current_user.future_months.build(future_month_params)
 
     if @future_month.save
       redirect_to @future_month
@@ -40,8 +45,14 @@ def destroy
 
     redirect_to root_path, status: :see_other
   end
+
+def correct_user
+  @future_month = current_user.future_months.find_by(id: params[:id])
+  redirect_to root_path, notice: "Not allowed to view other users' data" if @future_month.nil?
+end
+
   private
   def future_month_params
-    params.require(:future_month).permit(:title, :status)
+    params.require(:future_month).permit(:title, :user_id, :status)
   end
 end
