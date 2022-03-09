@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+body{
+    background-color: #d4d4d6;
+}
+
+.home_photo{
+    display: flex;
+    justify-content: right;
+    width: 1250px;
+    height: 500px;
+    margin-top: -200px;
+    /* box-shadow: black 0px 0px 10px; */
+}
+.nav-link1{
+}
