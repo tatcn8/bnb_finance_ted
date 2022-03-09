@@ -1,7 +1,8 @@
 <%= form_with model: month do |form| %>
     <div>
       <%= form.label :title %><br>
-      <%= form.text_field :title %>
+      <%= form.text_field :title,
+      placeholder: "Enter month/year" %>
       <% month.errors.full_messages_for(:title).each do |message| %>
         <div><%= message %></div>
       <% end %>
