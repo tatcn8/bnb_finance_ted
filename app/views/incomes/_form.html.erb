@@ -1,15 +1,18 @@
 <%= form_with model: [ @month, @month.incomes.build ] do |form| %>
     <p>
       <%= form.label :title %><br>
-      <%= form.text_field :title %>
+      <%= form.text_field :title,
+      placeholder: "Enter income source" %>
     </p>
     <p>
         <%= form.label :amount %><br>
-        <%= form.text_field :amount %>
+        <%= form.text_field :amount,
+        placeholder: "Enter value" %>
     </p>
      <p>
         <%= form.label :earner %><br>
-        <%= form.text_field :earner %>
+        <%= form.text_field :earner,
+        placeholder: "Who earned it" %>
     </p>
     <p>
       <%= form.submit %>

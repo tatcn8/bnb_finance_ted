@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'future_months/index'
 
   get "home/index"
+  get "about/index"
   
   resources :months do
     resources :expenses

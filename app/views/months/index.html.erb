@@ -3,13 +3,12 @@
 <% @months.each do |month| %>
   <% if month.user == current_user %>
     <% unless month.archived? %>
-      <ul>
         <li>
          <%= link_to month.title, month %>
        </li>
-      </ul>
     <% end %>
   <% end %>
 <% end %>
-
-<%= link_to "New Month", new_month_path %>
+<br>
+</br>
+<%= link_to "Add New Month", new_month_path %>

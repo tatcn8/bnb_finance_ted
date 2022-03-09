@@ -3,12 +3,12 @@
 <% @future_months.each do |future_month| %>
   <% if future_month.user == current_user %>
     <% unless future_month.archived? %>
-      <ul
         <li>
           <%= link_to future_month.title, future_month %>
         </li>
-      </ul>
     <% end %>
   <% end %>
 <% end %>
-<%= link_to "New Month", new_future_month_path %>
+<br>
+</br>
+<%= link_to "Add New Month", new_future_month_path %>

@@ -1,21 +1,26 @@
-<h1><%= @future_month.title %></h1>
+<h1> For the month of: <%= @future_month.title %></h1>
 
-<ul>
-  <li><%= link_to "Edit", edit_future_month_path(@future_month) %></li>
-  <li><%= link_to "Delete", future_month_path(@future_month), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></li>
-</ul>
 
-<h2>Income</h2>
+<h2>Income:</h2>
 <%= render @future_month.expected_incomes %>
 
-<h2>Add an Income:</h2>
+<h4>Add an Income:</h4>
 <%= render 'expected_incomes/form' %>
 
-<h2>Expenses</h2>
+<h2>Expenses:</h2>
 <%= render @future_month.expected_expenses %>
 
-<h2>Add an expense:</h2>
+<h4>Add an expense:</h4>
 <%= render 'expected_expenses/form' %>
+
+<br>
+</br>
+<p>
+  <%= link_to "Edit this Month", edit_future_month_path(@future_month) %>
+</p>
+<p>
+  <%= link_to "Delete this Month", future_month_path(@future_month), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %>
+</p>

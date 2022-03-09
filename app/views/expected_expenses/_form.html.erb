@@ -1,11 +1,13 @@
 <%= form_with model: [ @future_month, @future_month.expected_expenses.build ] do |form| %>
     <p>
       <%= form.label :title %><br>
-      <%= form.text_field :title %>
+      <%= form.text_field :title,
+      placeholder: "Enter expense/bill" %>
     </p>
     <p>
         <%= form.label :amount %><br>
-        <%= form.text_field :amount %>
+        <%= form.text_field :amount,
+        placeholder: "Enter amount" %>
     </p>
     <p>
       <%= form.submit %>

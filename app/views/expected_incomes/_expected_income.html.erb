@@ -14,10 +14,8 @@
 </p>
 
 <p>
-  <ul>
-    <li><%= link_to "Delete", [expected_income.future_month, expected_income], data: {
+  <%= link_to "Delete this Income", [expected_income.future_month, expected_income], data: {
                 turbo_method: :delete,
                 turbo_confirm: "Are you sure?"
-              } %></li>
-  </ul>
+              } %>
 </p>
