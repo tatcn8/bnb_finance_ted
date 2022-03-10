@@ -15,6 +15,7 @@
  */
 body{
     background-color: #d4d4d6;
+    font-family: 'Playfair Display', serif;
 }
 .home_photo{
     display: flex;
@@ -24,33 +25,40 @@ body{
     margin-top: -200px;
 }
 .btn-primary{
-    background-color: #6e6e97 !important;
+    background-color: #4b4b50 !important;
     width: 350px;
     height: 75px;
     font-size: 30px;
     box-shadow: black 0px 0px 3.5px;
-    color: rgb(61, 58, 58);
+    color: #a4a4a5;
+    font-family: 'Playfair Display', serif;
+    border-color: black;
 }
 .btn-secondary{
     background-color: brown !important;
+    font-family: 'Playfair Display', serif;
 }
 #bootstrap-override{
-    display: flex;
-    justify-content: flex-end;
-    border-radius: 15px;
-    background-color: #8e8e9c;
+    display: flex !important;
+    justify-content: flex-end !important;
+    border-radius: 50%;
+    background-color: #d4d4d6;
     color: rgb(61, 58, 58);
-
+    font-family: 'Playfair Display', serif;
 }
 #bootstrap-button{
     display: flex;
     justify-content: center;
+    font-family: 'Playfair Display', serif;
 }
 .moneyforcomputer{
-    height: 40px;
-    width: 40px;
+    height: 55px;
+    width: 55px;
 }
 .moneychick{
     box-shadow: black 0px 0px 10px;
     border-radius: 20px;
+}
+.modal-body{
+    font-weight: bolder !important
 }
