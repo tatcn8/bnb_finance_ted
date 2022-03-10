@@ -27,8 +27,37 @@ body{
 }
 
 .btn-primary{
-    background-color: #53537a !important;
+    background-color: #6e6e97 !important;
+    width: 350px;
+    height: 75px;
+    font-size: 30px;
+    box-shadow: black 0px 0px 3.5px;
+    color: rgb(61, 58, 58)
 }
 .btn-secondary{
     background-color: brown !important;
+}
+#bootstrap-override{
+    display: flex;
+    justify-content: flex-end;
+    border-radius: 15px;
+    background-color: #8e8e9c;
+    color: rgb(61, 58, 58);
+
+}
+
+#bootstrap-button{
+    display: flex;
+    justify-content: center;
+}
+
+.modal-body{
+    background-color: #d4d4d6;
+}
+.modal-footer{
+    background-color: #9e9ea8;
+}
+.modal-header{
+    background-color: #9e9ea8;
+    color: white
 }
