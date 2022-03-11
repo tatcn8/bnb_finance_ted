@@ -62,4 +62,11 @@ body{
 .modal-body{
     font-weight: bolder !important
 }
-
+.dave{
+    box-shadow: black 0px 0px 10px;
+    border-radius: 20px;
+}
+.month_photo{
+    display: flex;
+    justify-content: center;
+}
