@@ -68,5 +68,17 @@ body{
 }
 .month_photo{
     display: flex;
-    justify-content: center;
+    justify-content: right;
+    width: 800px;
+    height: 400px;
+    margin-top: -175px;
+    margin-left: 325px;
+
+}
+.month_photo1{
+    display: flex;
+    justify-content: right;
+    width: 1000px;
+    height: 450px;
+    margin-top: -150px;
 }
