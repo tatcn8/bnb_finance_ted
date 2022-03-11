@@ -39,8 +39,8 @@ body{
     font-family: 'Playfair Display', serif;
 }
 #bootstrap-override{
-    display: flex !important;
-    justify-content: flex-end !important;
+    display: flex;
+    justify-content: flex-end;
     border-radius: 50%;
     background-color: #d4d4d6;
     color: rgb(61, 58, 58);
@@ -62,3 +62,4 @@ body{
 .modal-body{
     font-weight: bolder !important
 }
+
