@@ -11,10 +11,13 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_03_14_191059) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "expected_expenses", force: :cascade do |t|
     t.string "title"
     t.string "amount"
-    t.integer "future_month_id", null: false
+    t.bigint "future_month_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
@@ -25,7 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_14_191059) do
     t.string "title"
     t.string "amount"
     t.string "earner"
-    t.integer "future_month_id", null: false
+    t.bigint "future_month_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
@@ -35,7 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_14_191059) do
   create_table "expenses", force: :cascade do |t|
     t.string "title"
     t.string "amount"
-    t.integer "month_id", null: false
+    t.bigint "month_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
@@ -55,7 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_14_191059) do
     t.string "title"
     t.string "amount"
     t.string "earner"
-    t.integer "month_id", null: false
+    t.bigint "month_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
