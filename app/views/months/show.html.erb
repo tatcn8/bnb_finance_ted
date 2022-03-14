@@ -26,3 +26,18 @@
                     turbo_confirm: "Are you sure?"
                   } %>
 </p>
+<div class = "total_section">
+  <h1> <%= @month.title %> totals</h1>
+</div>
+<div class = "total_section1">
+  <h4>Income: $<%= @month.sum_income %></h4>
+</div>
+<div class = "total_section2">
+  <h4>Expenses: $<%= @month.sum_expense %></h4>
+</div>
+<div class = "total_section3">
+  <h4>----------------</h4>
+</div>
+<div class = "total_section4">
+  <h4>Balance: $<%= @month.sum_income - @month.sum_expense %></h4>
+</div>

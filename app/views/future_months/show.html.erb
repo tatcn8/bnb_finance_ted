@@ -1,5 +1,5 @@
 <% content_for :title, "Future Data" %>
-<h1> For the month of: <%= @future_month.title %></h1>
+<h1> For the month of <%= @future_month.title %></h1>
 <%= link_to "Go Back", future_months_index_path %>
 
 
@@ -26,3 +26,22 @@
                     turbo_confirm: "Are you sure?"
                   } %>
 </p>
+
+<div class = "total_section">
+  <h1> <%= @future_month.title %> totals</h1>
+</div>
+<div class = "total_section1">
+  <h4>Income: $<%= @future_month.sum_future_income %></h4>
+</div>
+<div class = "total_section2">
+  <h4>Expenses: $<%= @future_month.sum_future_expense %></h4>
+</div>
+<div class = "total_section3">
+  <h4>----------------</h4>
+</div>
+<div class = "total_section4">
+  <h4>Projected balance: $<%= @future_month.sum_future_income - @future_month.sum_future_expense %></h4>
+</div>
+<div class = "total_section5">
+  <h6>(remember this is future/projected data)</h6>
+</div>
