@@ -9,7 +9,7 @@
 My vision for this site is to allow user's to input their past monthly spending in itemized fashion (i.e.their bills) as well as their incomes in a monthly itemized fashion. I hope that by seeing their historical data over time, it will allow them to plan for their future and to reach financial independence. In regards to planning, the site will also feature a "future" section, allowing the user to input their *planned* expepenses and *planned* income for upcoming month(s) which should allow them to keep track of their money and identify potential money suckers/unnecessary expenses. I have personally found that writing a monthly budget really helps to control your money. Dave Ramsey says "you can control your money, or you can watch it control you". My goal with this site is to enable people to regain control over their finances by having an easy way to track past financial data and plan for the future.
 
 ### Deployed at:
-URL GOES HERE
+https://quiet-retreat-79809.herokuapp.com/
 
 ### User Stories:
 - As a user, I would have a welcome page to greet me and prompt me to poke around or sign up
@@ -45,7 +45,7 @@ URL GOES HERE
 
 
 ### Technologies used:
-Ruby and Ruby on Rails were the technologies used in this project. The backend and frontend were all built in a single rails app and deployed via (PUT WHO IT WAS DEPLOYED THROUGH HERE) 
+Ruby and Ruby on Rails were the technologies used in this project. The backend and frontend were all built in a single rails app and deployed via Heroku.
 
 ### Acknowledgments:
 I would like to acknowledge the following people for their help in the creation of this project:
