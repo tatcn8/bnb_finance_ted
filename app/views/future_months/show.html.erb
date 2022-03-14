@@ -42,6 +42,12 @@
 <div class = "total_section4">
   <h4>Projected balance: $<%= @future_month.sum_future_income - @future_month.sum_future_expense %></h4>
 </div>
-<div class = "total_section5">
-  <h6>(remember this is future/projected data)</h6>
-</div>
+<% if @future_month.sum_future_income - @future_month.sum_future_expense >0 %>
+  <div class = "total_section5">
+    Remember to help others!
+  </div>
+<% else %>
+  <div class = "total_section5"> 
+    Act your wage!
+  </div>
+<% end %>

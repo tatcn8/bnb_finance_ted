@@ -41,3 +41,12 @@
 <div class = "total_section4">
   <h4>Balance: $<%= @month.sum_income - @month.sum_expense %></h4>
 </div>
+<% if @month.sum_income - @month.sum_expense >0 %>
+  <div class = "total_section5">
+    Remember to help others!
+  </div>
+<% else %>
+  <div class = "total_section5"> 
+    Act your wage!
+  </div>
+<% end %>
