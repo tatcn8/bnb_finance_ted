@@ -3,13 +3,13 @@
 <%= link_to "Go Back", future_months_index_path %>
 
 
-<h2>Income:</h2>
+<h2>Income: $<%= @future_month.sum_future_income %></h2>
 <%= render @future_month.expected_incomes %>
 
 <h4>Add an Income:</h4>
 <%= render 'expected_incomes/form' %>
 
-<h2>Expenses:</h2>
+<h2>Expenses: $<%= @future_month.sum_future_expense %></h2>
 <%= render @future_month.expected_expenses %>
 
 <h4>Add an expense:</h4>

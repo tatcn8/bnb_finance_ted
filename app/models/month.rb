@@ -6,4 +6,12 @@ class Month < ApplicationRecord
 
     validates :title, presence: true, length: { minimum: 3 }
 
+
+    def sum_expense
+        self.expenses.map(&:amount).map(&:to_f).sum.to_i
+    end
+
+    def sum_income
+        self.incomes.map(&:amount).map(&:to_f).sum.to_i
+    end
 end

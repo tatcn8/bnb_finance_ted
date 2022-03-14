@@ -3,13 +3,13 @@
 <%= link_to "Go Back", months_index_path %>
 
 
-<h2>Income:</h2>
+<h2>Income: $<%= @month.sum_income %></h2>
 <%= render @month.incomes %>
 
 <h4>Add an Income:</h4>
 <%= render 'incomes/form' %>
 
-<h2>Expenses:</h2>
+<h2>Expenses: $<%= @month.sum_expense %></h2>
 <%= render @month.expenses %>
 
 <h4>Add an expense:</h4>
