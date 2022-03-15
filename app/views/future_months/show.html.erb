@@ -1,10 +1,17 @@
 <% content_for :title, "Future Data" %>
 <h1> For the month of <%= @future_month.title %></h1>
-<%= link_to "Go Back", future_months_index_path %>
-<br>
-</br>
-<br>
-</br>
+<p>
+  <%= link_to "Go Back", future_months_index_path %>
+</p>
+<p>
+  <%= link_to "Edit this Month", edit_future_month_path(@future_month) %>
+</p>
+<p>
+  <%= link_to "Delete this Month", future_month_path(@future_month), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %>
+</p>
 
 <h4>Income: $<%= @future_month.sum_future_income %></h4>
 <table class = "table table-striped table-sm">
@@ -21,6 +28,10 @@
         <td> <%= expected_income.title %> </td>
         <td> <%= expected_income.amount %> </td>
         <td> <%= expected_income.earner %> </td>
+        <td>   <%= link_to "Delete", [expected_income.future_month, expected_income], data: {
+          turbo_method: :delete,
+          turbo_confirm: "Are you sure?"
+        } %> </td>
       </tr>
   <% end %>
       <tr>
@@ -48,6 +59,10 @@
       <tr>
         <td> <%= expected_expense.title %> </td>
         <td> <%= expected_expense.amount %> </td>
+        <td>   <%= link_to "Delete", [expected_expense.future_month, expected_expense], data: {
+          turbo_method: :delete,
+          turbo_confirm: "Are you sure?"
+        } %> </td>
       </tr>
   <% end %>
       <tr>
@@ -59,18 +74,6 @@
 
 <h6>Add an expense:</h6>
 <%= render 'expected_expenses/form' %>
-
-<br>
-</br>
-<p>
-  <%= link_to "Edit this Month", edit_future_month_path(@future_month) %>
-</p>
-<p>
-  <%= link_to "Delete this Month", future_month_path(@future_month), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %>
-</p>
 
 <div class = "total_section">
   <h1> <%= @future_month.title %> totals</h1>
