@@ -1,5 +1,5 @@
 # Finance on Rails
-## By Ted Tash as part of General Assembly's Software Engineering Bootcamp
+## By Ted Tash as part of BNB's Apprentice Program
 
 ### Description:
 **The purpose of this app is to:**
