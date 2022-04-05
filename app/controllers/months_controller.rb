@@ -52,6 +52,6 @@ def correct_user
 end
   private
   def month_params
-    params.require(:month).permit(:title, :user_id, :status)
+    params.require(:month).permit(:month, :year, :user_id, :status)
   end
 end

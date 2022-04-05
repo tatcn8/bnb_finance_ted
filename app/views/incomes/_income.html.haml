@@ -1,0 +1,18 @@
+%p
+  %strong Source:
+  = income.title
+%p
+  %strong Amount:
+  = income.amount
+%p
+  %strong Earner:
+  = income.earner
+%p
+  %strong status:
+  = income.status
+%p
+%ul
+  %li= link_to "Delete", [income.month, income], data: { |
+        turbo_method: :delete,                          |
+        turbo_confirm: "Are you sure?"                  |
+      }                                                 |

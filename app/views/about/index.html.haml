@@ -1,0 +1,67 @@
+- content_for :title, "About"
+.container
+  %h1 About
+%div
+  %h4 Purpose
+  %p
+    \-This site was designed to allow you to track your past expenditures/income in order to help you plan for the future
+  %p
+    \-Life is too short to spend at work. Our goal is to see everyone achieve financial indepdence as quick as they can
+  %p
+    \-The more money you have, the more pizza you can have (just saying)
+%br
+/ Button trigger modal
+#bootstrap-button
+  %button.btn.btn-primary{"data-bs-target" => "#exampleModal", "data-bs-toggle" => "modal", :type => "button"}
+    How it works
+/ Modal
+#exampleModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h5#exampleModalLabel.modal-title How it works
+        %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
+      .modal-body
+        %p
+          \-Sign up -&gt; Start entering your past data (use your bank/credit card statements to find your expenses)
+        %p
+          \-Evaluate the past data -&gt; what areas surpise you? Where are you spending more money than you thought?
+        %p
+          \-Enter future data -&gt; give your best guess (using the past data as a model) to your upcoming income/expenses
+        %p
+          \-Evaluate the future data -&gt; are you able to pay all your bills? If so, great! Start planning how much you can save/where those savings dollars will go
+        %p
+          \-Evaluate the future data -&gt; are you able to pay all your bills? If not, no big deal! Start planning what expenses you can eliminate and/or how you can earn more money
+      .modal-footer
+        %button.btn.btn-secondary{"data-bs-dismiss" => "modal", :type => "button"} Close
+%br
+/ Button trigger modal
+#bootstrap-button
+  %button.btn.btn-primary{"data-bs-target" => "#exampleModal1", "data-bs-toggle" => "modal", :type => "button"}
+    Resources
+/ Modal
+#exampleModal1.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content>
+      .modal-header
+        %h5#exampleModalLabel.modal-title Useful things we like
+        %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
+      .modal-body
+        %p
+          \-The ultimate roadmap to financial freedom can be found via
+          = succeed "," do
+            %a{:href => "https://www.ramseysolutions.com/"}
+        and his team at Ramsey Solutions
+      = succeed "," do
+        %p
+          \-Listen to his
+          = succeed "," do
+            %a{:href => "https://open.spotify.com/show/5exfRPDNCBHmntEkJrlLmX"}
+      = succeed "," do
+        %a{:href => "https://www.amazon.com/Total-Money-Makeover-Classic-Financial/dp/1595555277/ref=sr_1_1?crid=2VO2RBJ3V6EFV=total+money+makeover=1646844863=total+mon%2Caps%2C109=8-1"}
+    , and come up with a plan to start winning with money
+  %p
+    \-Check out this
+    = succeed "," do
+      %a{:href => "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"}
+  (it does not take that much money each month to add up to ALOT OF MONEY later!)

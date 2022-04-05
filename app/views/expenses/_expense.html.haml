@@ -1,0 +1,11 @@
+%p
+  %strong Expense:
+  = expense.title
+%p
+  %strong Amount:
+  = expense.amount
+%p
+  = link_to "Delete Expense", [expense.month, expense], data: { |
+      turbo_method: :delete,                                    |
+      turbo_confirm: "Are you sure?"                            |
+    }                                                           |
