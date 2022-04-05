@@ -12,7 +12,7 @@ class MonthsController < ApplicationController
 
   def new
     # @month = Month.new
-    @month = current_user.months.build
+    @month = current_user.months.build(year:Date.today.year)
   end
 
   def create
