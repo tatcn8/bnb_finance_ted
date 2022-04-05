@@ -1,0 +1,18 @@
+= form_with model: [ @month, @month.expenses.build ] do |form|
+  %p
+    = form.label :title
+    %br/
+    = form.text_field :title,           |
+      placeholder: "Enter expense/bill" |
+  %p
+    = form.label :amount
+    %br/
+    = form.text_field :amount,    |
+      placeholder: "Enter amount" |
+  %p
+    = form.submit
+  %p
+    = form.label :status
+    %br/
+    = form.select :status, ['Realized', 'Expected'], |
+      selected: 'Expected'      
