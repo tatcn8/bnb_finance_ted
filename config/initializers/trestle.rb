@@ -139,7 +139,7 @@ Trestle.configure do |config|
   # Specify the user class to be used by trestle-auth.
   #
   config.auth.user_class = -> { User }
-  config.auth.user_scope = -> { User.where(admin: true) }
+
 
   # Specify the Trestle admin for managing the current user (My Account).
   #

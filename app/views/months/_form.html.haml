@@ -1,4 +1,8 @@
 = form_with model: month do |form|
+  %div
+    =form.label :cover_picture
+    =form.file_field :cover_picture
+  %br
   %p
   = form.label :month
   = form.select :month, ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']

@@ -48,6 +48,8 @@ def destroy
 
   private
   def month_params
-    params.require(:month).permit(:month, :year, :status)
+
+    params.require(:month).permit(:month, :year, :cover_picture, :status)
+
   end
 end

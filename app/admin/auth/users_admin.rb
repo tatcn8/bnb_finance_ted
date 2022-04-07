@@ -9,6 +9,7 @@ Trestle.resource(:users, model: User, scope: Auth) do
     column :avatar, header: false do |user|
       avatar_for(user)
     end
+    column :profile_photo
     column :email, link: true
     actions do |a|
       a.delete unless a.instance == current_user
@@ -21,6 +22,7 @@ Trestle.resource(:users, model: User, scope: Auth) do
     row do
       col(sm: 6) { password_field :password }
       col(sm: 6) { password_field :password_confirmation }
+      col(sm: 6) {file_field :profile_photo}
     end
   end
 
