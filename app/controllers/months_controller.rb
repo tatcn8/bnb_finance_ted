@@ -1,6 +1,6 @@
 class MonthsController < ApplicationController
   before_action :authenticate_user!
-  before_action :correct_user, except: [:new, :index, :create]
+  
 
   def index
     @months = Month.all
@@ -27,11 +27,11 @@ class MonthsController < ApplicationController
   end
 
   def edit
-    @month = Month.find(params[:id])
+    @month = current_user.months.find(params[:id])
   end
 
   def update
-    @month = Month.find(params[:id])
+    @month = current_user.months.find(params[:id])
 
     if @month.update(month_params)
       redirect_to @month
@@ -40,18 +40,14 @@ class MonthsController < ApplicationController
     end
   end
 def destroy
-    @month = Month.find(params[:id])
+    @month = current_user.months.find(params[:id])
     @month.destroy
 
     redirect_to root_path, status: :see_other
   end
 
-def correct_user
-  @month = current_user.months.find_by(id: params[:id])
-  redirect_to root_path, notice: "Not allowed to view other users' data" if @month.nil?
-end
   private
   def month_params
-    params.require(:month).permit(:month, :year, :user_id, :status)
+    params.require(:month).permit(:month, :year, :status)
   end
 end

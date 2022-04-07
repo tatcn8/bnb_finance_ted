@@ -10,110 +10,14 @@
       turbo_method: :delete,                                 |
       turbo_confirm: "Are you sure?"                         |
     }                                                        |    
-%h4
-  Expected Income: $#{@month.sum_income_expected}
-%table.table.table-striped.table-sm{:style => "width: 50%"}
-  %thead
-    %tr
-      %th{:scope => "col", :style => "width: 20%"} Source
-      %th{:scope => "col", :style => "width: 20%"} Amount
-      %th{:scope => "col"} Earner
-  - @month.incomes.each do |income|
-    -if income.status == "Expected" 
-      %tbody
-        %tr
-          %td
-            = income.title
-          %td
-            = income.amount
-          %td
-            = income.earner
-          %td
-            = link_to "Delete", [income.month, income], data: { |
-                turbo_method: :delete,                          |
-                turbo_confirm: "Are you sure?"                  |
-              }                                                 |
-  %tr
-    %td Total
-    %td
-      $#{@month.sum_income_expected}
-%h4
-  Realized Income: $#{@month.sum_income_realized}
-%table.table.table-striped.table-sm{:style => "width: 50%"}
-  %thead
-    %tr
-      %th{:scope => "col", :style => "width: 20%"} Source
-      %th{:scope => "col", :style => "width: 20%"} Amount
-      %th{:scope => "col"} Earner
-  - @month.incomes.each do |income|
-    -if income.status == "Realized" 
-      %tbody
-        %tr
-          %td
-            = income.title
-          %td
-            = income.amount
-          %td
-            = income.earner
-          %td
-            = link_to "Delete", [income.month, income], data: { |
-                turbo_method: :delete,                          |
-                turbo_confirm: "Are you sure?"                  |
-              }                                                 |
-  %tr
-    %td Total
-    %td
-      $#{@month.sum_income_realized}     
+
+= render "table", total: @month.sum_income_realized, header: 'Realized Income:', shows_earner: true, collection: @month.incomes.select { |income| income.status == "Realized" }
+= render "table", total: @month.sum_income_expected, header: 'Expected Income:', shows_earner: true, collection: @month.incomes.select { |income| income.status == "Expected" }
+
 %h6 Add an Income:
 = render 'incomes/form'
-%br/
-%h4
-  Realized Expenses: $#{@month.sum_expense_realized}
-%table.table.table-striped.table-sm{:style => "width: 50%"}
-  %thead
-    %tr
-      %th{:scope => "col", :style => "width: 30%"} Expense
-      %th{:scope => "col"} Amount
-  - @month.expenses.each do |expense|
-    -if expense.status == "Realized" 
-      %tbody
-        %tr
-          %td
-            = expense.title
-          %td
-            = expense.amount
-          %td
-            = link_to "Delete", [expense.month, expense], data: { |
-                turbo_method: :delete,                            |
-                turbo_confirm: "Are you sure?"                    |
-              }                                                   |
-  %tr
-    %td Total
-    %td
-      $#{@month.sum_expense_realized}
-%h4
-  Expected Expenses: $#{@month.sum_expense_expected}
-%table.table.table-striped.table-sm{:style => "width: 50%"}
-  %thead
-    %tr
-      %th{:scope => "col", :style => "width: 30%"} Expense
-      %th{:scope => "col"} Amount
-  - @month.expenses.each do |expense|
-    -if expense.status == "Expected" 
-      %tbody
-        %tr
-          %td
-            = expense.title
-          %td
-            = expense.amount
-          %td
-            = link_to "Delete", [expense.month, expense], data: { |
-                turbo_method: :delete,                            |
-                turbo_confirm: "Are you sure?"                    |
-              }                                                   |
-  %tr
-    %td Total
-    %td
-      $#{@month.sum_expense_expected}
+%br
+= render "table", total: @month.sum_expense_realized, header: 'Realized Expenses:', shows_earner: false, collection: @month.expenses.select { |expense| expense.status == "Realized" }
+= render "table", total: @month.sum_expense_expected, header: 'Expected Expenses:', shows_earner: false, collection: @month.expenses.select { |expense| expense.status == "Expected" }
 %h6 Add an expense:
 = render 'expenses/form'

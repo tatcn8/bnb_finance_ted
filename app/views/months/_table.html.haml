@@ -1,0 +1,30 @@
+%h4
+  = header
+  = "$#{total}" 
+%table.table.table-striped.table-sm{:style => "width: 50%"}
+  %thead
+    %tr 
+      %th{:scope => "col", :style => "width: 20%"} Title
+      %th{:scope => "col", :style => "width: 20%"} Amount
+      - if shows_earner  
+        %th{:scope => "col", :style => "width: 20%"} Earner
+  %tbody
+    - collection.each do |item|
+      %tr
+        %td
+          = item.title
+        %td
+          = item.amount
+        -if shows_earner
+          %td
+            = item.earner
+        %td
+          = link_to "Delete", [item.month, item], data: { |
+              turbo_method: :delete,                          |
+              turbo_confirm: "Are you sure?"                  |
+            }                                                 |
+    %tr
+      %td Total
+      %td
+        = "$#{total}"
+
