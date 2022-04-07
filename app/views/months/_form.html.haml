@@ -8,21 +8,11 @@
   = form.select :month, ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
   %br
-    %p
-    = form.label :year
-    = form.select :year, (Date.today.year - 10)..(Date.today.year + 10)
-      
-
+  %p
+  = form.label :year
+  = form.select :year, (Date.today.year - 10)..(Date.today.year + 10)
+  
   %br
   %div
-    = form.text_field :user_id, |
-      id: :month_user_id,       |
-      value: current_user.id,   |
-      type: :hidden             |
-  %div
     = form.submit
-  %div
-    = form.label :status
-    %br/
-    = form.select :status, ['public'], |
-      selected: 'public'                                      |
+                                 

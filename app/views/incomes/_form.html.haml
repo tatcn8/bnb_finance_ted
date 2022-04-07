@@ -15,9 +15,9 @@
     = form.text_field :earner,     |
       placeholder: "Who earned it" |
   %p
-    = form.submit
-  %p
     = form.label :status
     %br/
-    = form.select :status, ['Realized', 'Expected'], |
-      selected: 'Expected'                                      |
+    = form.select :status, FinanceStatus::VALID_STATUSES
+  %p
+    = form.submit
+                                       
