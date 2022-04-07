@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :months
-  has_many :future_months
+  has_one_attached :profile_photo
 end

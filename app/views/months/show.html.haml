@@ -1,6 +1,8 @@
 - content_for :title, "Past Data"
 %h1
   For the month of #{@month.month} #{@month.year}
+- if @month.cover_picture.attached?
+  = image_tag @month.cover_picture, style: "width: 300px; height: 400px"
 %p
   = link_to "Go Back", months_index_path
 %p

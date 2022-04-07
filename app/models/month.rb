@@ -3,6 +3,7 @@ class Month < ApplicationRecord
     belongs_to :user
     has_many :expenses, dependent: :destroy
     has_many :incomes, dependent: :destroy
+    has_one_attached :cover_picture
 
     validates :month, presence: true, length: { minimum: 3 }
 

@@ -1,7 +1,9 @@
 version: "3"
 services:
   app:    
-    image: brandnewbox/bnb-ruby:2.7-postgresql
+    image: finance-dev
+    build:
+      context: ./devops
     command: bundle exec puma -C config/puma.rb
     volumes:
       - .:/app:cached

@@ -46,7 +46,8 @@ gem "bootsnap", require: false
 gem "haml-rails", "~> 2.0"
 gem "trestle"
 gem "trestle-auth"
-
+gem "mini_magick"
+gem 'image_processing', '~> 1.2'
 
 # Use Sass to process CSS
 gem "sassc-rails", "<= 2.4"

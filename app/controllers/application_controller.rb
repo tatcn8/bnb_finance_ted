@@ -1,2 +1,9 @@
 class ApplicationController < ActionController::Base
-end
+    before_action :configure_permitted_parameters, if: :devise_controller?
+  
+    protected
+  
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:account_update, keys: [:username, :password, :password_confirmation, :current_password, :email, :profile_photo])
+    end
+  end
