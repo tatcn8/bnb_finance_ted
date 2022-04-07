@@ -1,5 +1,5 @@
 class Expense < ApplicationRecord
-  include Visible
+  include FinanceStatus
 
   belongs_to :month
 end
