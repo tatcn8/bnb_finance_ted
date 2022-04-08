@@ -1,5 +1,5 @@
 class Month < ApplicationRecord
-    belongs_to :user
+    belongs_to :user, optional: true
     has_many :expenses, dependent: :destroy
     has_many :incomes, dependent: :destroy
     has_one_attached :cover_picture

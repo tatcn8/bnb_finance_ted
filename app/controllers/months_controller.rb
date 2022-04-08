@@ -3,7 +3,7 @@ class MonthsController < ApplicationController
   
 
   def index
-    @months = Month.all
+    @months = Month.paginate(page: params[:page], per_page: 10)
   end
 
   def show
