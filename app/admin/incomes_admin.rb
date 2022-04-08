@@ -34,7 +34,7 @@ Trestle.resource(:incomes) do
     text_field :title
     text_field :amount
     text_field :earner
-    select :status, ["Realized", "Expected"]
+    select :status, FinanceStatus::VALID_STATUSES
   end
   # form do |income|
   #   text_field :name

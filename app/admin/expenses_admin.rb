@@ -17,7 +17,7 @@ Trestle.resource(:expenses) do
   
     text_field :title
     text_field :amount
-    select :status, ["Expected", "Realized"]
+    select :status, FinanceStatus::VALID_STATUSES
     
   end
   # Customize the table columns shown on the index view.
