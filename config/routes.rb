@@ -2,11 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#index'
   
-  get 'months/index'
-  get 'future_months/index'
-
-  get "home/index"
-  get "about/index"
+  resource  :about, only: [:show], controller: "about" 
+  resources :charts, only: [:index]
   
   resources :months do
     resources :expenses

@@ -3,11 +3,15 @@ class MonthsController < ApplicationController
   
 
   def index
-    @months = Month.paginate(page: params[:page], per_page: 10)
+    @months = current_user.months.paginate(page: params[:page], per_page: 10)
   end
 
   def show
     @month = Month.find(params[:id])
+    @data = { 
+      a: @month.incomes.select { |income| income.status == "Realized" }.map(&:amount).sum,
+      b: @month.expenses.select { |expense| expense.status == "Realized" }.map(&:amount).sum 
+    }
   end
 
   def new

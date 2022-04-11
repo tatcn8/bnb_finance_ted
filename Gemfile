@@ -51,6 +51,7 @@ gem 'image_processing', '~> 1.2'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap4'
+gem "chartkick"
 
 
 # Use Sass to process CSS
