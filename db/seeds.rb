@@ -57,20 +57,24 @@ User.all.each do |user|
 end
 
 
-Month.all.each do |month|
-  [
-    {title: Faker::Restaurant.name, amount: Faker::Number.number(digits: 3)}
-  ].each do |expense|
-    Expense.find_or_create_by!(title: expense[:title], amount: expense[:amount], month: month, status: "Expected")
+5.times{
+  Month.all.each do |month|
+    [
+      {title: Faker::Restaurant.name, amount: Faker::Number.number(digits: 3)}
+    ].each do |expense|
+      Expense.find_or_create_by!(title: expense[:title], amount: expense[:amount], month: month, status: "Expected")
+    end
   end
-end
+}
 
 
-Month.all.each do |month|
-  [
-    {title: Faker::Company.name, earner: Faker::Name.name, amount: Faker::Number.number(digits: 3)}
-  ].each do |income|
-    Income.find_or_create_by!(title: income[:title], earner: income[:earner], amount: income[:amount], month: month, status: "Expected")
+5.times{
+  Month.all.each do |month|
+    [
+      {title: Faker::Company.name, earner: Faker::Name.name, amount: Faker::Number.number(digits: 3)}
+    ].each do |income|
+      Income.find_or_create_by!(title: income[:title], earner: income[:earner], amount: income[:amount], month: month, status: "Expected")
+    end
   end
-end
+}
 
