@@ -25,9 +25,7 @@ require 'faker'
 end
 
 
-user_array = User.all.select{ |human| human.id }
-
-for i in user_array do
+User.all.each do |user|
   [
     {month: "Jan", year: "2021"},
     {month: "Feb", year: "2021"},
@@ -54,31 +52,25 @@ for i in user_array do
     {month: "Nov", year: "2022"},
     {month: "Dec", year: "2022"}
   ].each do |month|
-      Month.find_or_create_by!(month: month[:month], year: month[:year], user: i)
+      Month.find_or_create_by!(month: month[:month], year: month[:year], user: user)
   end
 end
 
 
-month_array = Month.all.select{ |month| month.id }
-5.times {
-  for i in month_array do
-    [
-      {title: Faker::Restaurant.name, amount: Faker::Number.number(digits: 3)}
-    ].each do |expense|
-      Expense.find_or_create_by!(title: expense[:title], amount: expense[:amount], month: i, status: "Expected")
-    end
+Month.all.each do |month|
+  [
+    {title: Faker::Restaurant.name, amount: Faker::Number.number(digits: 3)}
+  ].each do |expense|
+    Expense.find_or_create_by!(title: expense[:title], amount: expense[:amount], month: month, status: "Expected")
   end
-}
+end
 
 
-
-month_array = Month.all.select{ |month| month.id }
-5.times{
-  for i in month_array do
-    [
-      {title: Faker::Company.name, earner: Faker::Name.name, amount: Faker::Number.number(digits: 3)}
-    ].each do |income|
-      Income.find_or_create_by!(title: income[:title], earner: income[:earner], amount: income[:amount], month: i, status: "Expected")
-    end
+Month.all.each do |month|
+  [
+    {title: Faker::Company.name, earner: Faker::Name.name, amount: Faker::Number.number(digits: 3)}
+  ].each do |income|
+    Income.find_or_create_by!(title: income[:title], earner: income[:earner], amount: income[:amount], month: month, status: "Expected")
   end
-}
+end
+
