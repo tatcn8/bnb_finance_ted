@@ -25,7 +25,7 @@ class Month < ApplicationRecord
 
     private
     def sum_items(items, status)
-        items.select{ |item| item.status == status }.map(&:amount).map(&:to_i).sum
+        items.select{ |item| item.status == status }.map(&:amount).sum
     end
 end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_07_164700) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_11_145127) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,11 +65,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_07_164700) do
 
   create_table "expenses", force: :cascade do |t|
     t.string "title"
-    t.string "amount"
     t.bigint "month_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
+    t.integer "amount"
     t.index ["month_id"], name: "index_expenses_on_month_id"
   end
 
@@ -84,12 +84,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_07_164700) do
 
   create_table "incomes", force: :cascade do |t|
     t.string "title"
-    t.string "amount"
     t.string "earner"
     t.bigint "month_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
+    t.integer "amount"
     t.index ["month_id"], name: "index_incomes_on_month_id"
   end
 
