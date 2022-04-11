@@ -14,6 +14,7 @@ require 'faker'
   {email: "josh@brandnewbox.com"},
   {email: "isaac@brandnewbox.com"},
   {email: "ashley@brandnewbox.com"},
+  {email: "admin@brandnewbox.com"},
   {email: "youremail@mail.com"}
 ].each do |user|
   new_user = User.find_or_initialize_by(email: user[:email])
@@ -28,32 +29,56 @@ user_array = User.all.select{ |human| human.id }
 
 for i in user_array do
   [
-    {month: "Jan", year: "2021", user_id: i },
-    {month: "Feb", year: "2021", user_id: i },
-    {month: "Mar", year: "2021", user_id: i },
-    {month: "Apr", year: "2021", user_id: i },
-    {month: "May", year: "2021", user_id: i },
-    {month: "Jun", year: "2021", user_id: i },
-    {month: "Jul", year: "2021", user_id: i },
-    {month: "Aug", year: "2021", user_id: i },
-    {month: "Sep", year: "2021", user_id: i },
-    {month: "Oct", year: "2021", user_id: i },
-    {month: "Nov", year: "2021", user_id: i },
-    {month: "Dec", year: "2022", user_id: i },
-    {month: "Jan", year: "2022", user_id: i },
-    {month: "Feb", year: "2022", user_id: i },
-    {month: "Mar", year: "2022", user_id: i },
-    {month: "Apr", year: "2022", user_id: i },
-    {month: "May", year: "2022", user_id: i },
-    {month: "Jun", year: "2022", user_id: i },
-    {month: "Jul", year: "2022", user_id: i },
-    {month: "Aug", year: "2022", user_id: i },
-    {month: "Sep", year: "2022", user_id: i },
-    {month: "Oct", year: "2022", user_id: i },
-    {month: "Nov", year: "2022", user_id: i },
-    {month: "Dec", year: "2022", user_id: i }
+    {month: "Jan", year: "2021"},
+    {month: "Feb", year: "2021"},
+    {month: "Mar", year: "2021"},
+    {month: "Apr", year: "2021"},
+    {month: "May", year: "2021"},
+    {month: "Jun", year: "2021"},
+    {month: "Jul", year: "2021"},
+    {month: "Aug", year: "2021"},
+    {month: "Sep", year: "2021"},
+    {month: "Oct", year: "2021"},
+    {month: "Nov", year: "2021"},
+    {month: "Dec", year: "2022"},
+    {month: "Jan", year: "2022"},
+    {month: "Feb", year: "2022"},
+    {month: "Mar", year: "2022"},
+    {month: "Apr", year: "2022"},
+    {month: "May", year: "2022"},
+    {month: "Jun", year: "2022"},
+    {month: "Jul", year: "2022"},
+    {month: "Aug", year: "2022"},
+    {month: "Sep", year: "2022"},
+    {month: "Oct", year: "2022"},
+    {month: "Nov", year: "2022"},
+    {month: "Dec", year: "2022"}
   ].each do |month|
-      Month.find_or_create_by!(month: month[:month], year: month[:year], user_id: month[:user_id])
+      Month.find_or_create_by!(month: month[:month], year: month[:year], user: i)
   end
 end
 
+
+month_array = Month.all.select{ |month| month.id }
+5.times {
+  for i in month_array do
+    [
+      {title: Faker::Restaurant.name, amount: Faker::Number.number(digits: 3)}
+    ].each do |expense|
+      Expense.find_or_create_by!(title: expense[:title], amount: expense[:amount], month: i, status: "Expected")
+    end
+  end
+}
+
+
+
+month_array = Month.all.select{ |month| month.id }
+5.times{
+  for i in month_array do
+    [
+      {title: Faker::Company.name, earner: Faker::Name.name, amount: Faker::Number.number(digits: 3)}
+    ].each do |income|
+      Income.find_or_create_by!(title: income[:title], earner: income[:earner], amount: income[:amount], month: i, status: "Expected")
+    end
+  end
+}

@@ -1,5 +1,5 @@
 class Month < ApplicationRecord
-    belongs_to :user, optional: true
+    belongs_to :user
     has_many :expenses, dependent: :destroy
     has_many :incomes, dependent: :destroy
     has_one_attached :cover_picture
@@ -25,7 +25,7 @@ class Month < ApplicationRecord
 
     private
     def sum_items(items, status)
-        items.select{ |item| item.status == status }.map(&:amount).map(&:to_i).sum
+        items.select{ |item| item.status == status }.map(&:amount).sum
     end
 end
 

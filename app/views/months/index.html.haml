@@ -9,5 +9,7 @@
 %br/
 .month_photo
   = image_tag("dave_rules1.jpg", :alt => "success", :class => "dave")
+%br/
+%br/
 .paginate
-  = will_paginate @months
+  = will_paginate @months, renderer: WillPaginate::ActionView::BootstrapLinkRenderer
