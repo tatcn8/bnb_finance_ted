@@ -1,7 +1,16 @@
 - content_for :title, "Past Data"
 %h1
   For the month of #{@month.month} #{@month.year}
-  = column_chart(@data) 
+  THIS IS THE "LAST MONTH" BEING USED IN THE COMPARISON CHART -> #{@last_month.month} #{@last_month.year}
+%h3
+  Overall Data:
+  = column_chart(@total_data, xtitle: "#{@month.month} #{@month.year} Data", ytitle: "Amount in dollars ($USD)")
+  Realized Data:
+  = column_chart(@realized_data, xtitle: "#{@month.month} #{@month.year} Data", ytitle: "Amount in dollars ($USD)")
+  Last Month's Comparison:
+  = column_chart(@last_month_comparison, xtitle: "#{@month.month} #{@month.year} and #{@last_month.month} #{@last_month.year} comparison data" , ytitle: "Amount in dollars ($USD)")
+  Annual Summary (Income):
+  = line_chart(@annual_summary, xtitle: "Monthly Income", ytitle: "Amount in dollars ($USD)")
 - if @month.cover_picture.attached?
   = image_tag @month.cover_picture, style: "width: 300px; height: 400px"
 %p

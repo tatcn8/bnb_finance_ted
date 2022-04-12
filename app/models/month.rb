@@ -4,8 +4,7 @@ class Month < ApplicationRecord
     has_many :incomes, dependent: :destroy
     has_one_attached :cover_picture
 
-    validates :month, presence: true, length: { minimum: 3 }
-
+    validates :month, presence: true
 
     def sum_income_realized
         sum_items(incomes, "Realized")
