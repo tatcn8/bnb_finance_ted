@@ -5,6 +5,11 @@ class Month < ApplicationRecord
     has_one_attached :cover_picture
 
     validates :month, presence: true
+    ARR = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+    def name
+        ARR[month-1]
+    end
 
     def sum_income_realized
         sum_items(incomes, "Realized")

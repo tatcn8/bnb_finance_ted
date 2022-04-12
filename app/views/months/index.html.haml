@@ -2,7 +2,7 @@
 %h1 Months
 - @months.each do |month|
   %li
-    = link_to "#{month.month} #{month.year}", month
+    = link_to "#{month.name} #{month.year}", month
 %br/
 = link_to "Add New Month", new_month_path
 %br/
