@@ -1,12 +1,12 @@
 - content_for :title, "Past Data"
 %h1
   For the month of #{@month.name} #{@month.year}
-  THIS IS THE "LAST MONTH" BEING USED IN THE COMPARISON CHART -> #{@last_month.name} #{@last_month.year}
 %h3
   Overall Data:
   = column_chart(@total_data, xtitle: "#{@month.name} #{@month.year} Data", ytitle: "Amount in dollars ($USD)", stacked: true)
+-unless @last_month.nil?
   Last Month's Comparison:
-  = column_chart(@last_month_comparison, xtitle: "#{@month.name} #{@month.year} and #{@last_month.name} #{@last_month.year} comparison data" , ytitle: "Amount in dollars ($USD)")
+  = column_chart(@last_month_comparison, xtitle: "#{@last_month.name} #{@last_month.year} and #{@month.name} #{@month.year} Comparison Data" , ytitle: "Amount in dollars ($USD)", stacked: true)
 - if @month.cover_picture.attached?
   = image_tag @month.cover_picture, style: "width: 300px; height: 400px"
 %p

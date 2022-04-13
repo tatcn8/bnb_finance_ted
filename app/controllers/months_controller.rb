@@ -8,32 +8,38 @@ class MonthsController < ApplicationController
 
   def show
     @month = Month.find(params[:id])
-    @last_month = Month.where(month: @month.month-1, year: @month.year).last
+    @last_month = Month.where("user_id = ? AND (months.year < ?) OR (months.year = ? AND months.month < ?)", current_user.id, @month.year, @month.year, @month.month).last
     
     @realized_income = @month.incomes.select { |income| income.status == "Realized" }.map(&:amount).sum
     @realized_expense = @month.expenses.select { |expense| expense.status == "Realized" }.map(&:amount).sum
     @expected_income = @month.incomes.select { |income| income.status == "Expected" }.map(&:amount).sum
     @expected_expense = @month.expenses.select { |expense| expense.status == "Expected" }.map(&:amount).sum
     
-    @total_data = [
+    @total_data =[
       {
-        name: "Income",
-        data: [["Expected Income", @expected_income], ["Realized Income", @realized_income]]
+        name: "Expected",
+        data: [["Income", @expected_income], ["Expenses", @expected_expense]],
+        stack: "Expected"
       },
       {
-        name: "Expenses",
-        data: [["Expected Expenses", @expected_expense], ["Realized Expenses", @realized_expense]]
+        name: "Realized",
+        data: [["Income", @realized_income], ["Expenses", @realized_expense]],
+        stack: "Realized"
       }
     ]
 
-    @last_month_comparison = {
-      "#{@last_month.name} #{@last_month.year} Income": @last_month.incomes.select { |income| income.status == "Realized" }.map(&:amount).sum,
-      "#{@month.name} #{@month.year} Income": @realized_income,
-      "#{@last_month.name} #{@last_month.year} Expenses": @last_month.expenses.select { |expense| expense.status == "Realized" }.map(&:amount).sum,
-      "#{@month.name} #{@month.year} Expenses": @realized_expense
-    }
-
- 
+    @last_month_comparison = [
+      {
+        name: "#{@last_month.name} #{@last_month.year}",
+        data: [["Income", @last_month.incomes.select { |income| income.status == "Realized" }.map(&:amount).sum], [ "Expenses", @last_month.expenses.select { |expense| expense.status == "Realized" }.map(&:amount).sum]],
+        stack: "#{@last_month.name} #{@last_month.year}"
+      },
+      {
+        name: "#{@month.name} #{@month.year}",
+        data: [["Income", @realized_income], ["Expenses", @realized_expense]],
+        stack: "#{@month.name} #{@month.year}"
+      }
+    ]
   end
 
   def new
