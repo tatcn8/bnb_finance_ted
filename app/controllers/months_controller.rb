@@ -1,10 +1,12 @@
 class MonthsController < ApplicationController
   before_action :authenticate_user!
-  # add a scope last_month and month_array...will take parameters...
-  # ..look up scope documentation...inside of month model
 
+  
   def index
     @months = current_user.months.paginate(page: params[:page], per_page: 10)
+    puts "*"*88
+    puts ARR
+    puts "*"*88
   end
 
   def show
@@ -16,7 +18,7 @@ class MonthsController < ApplicationController
       @month_array.map(&:name)
     @month_incomes = 
       @month_array.map do |month|
-        month.incomes.select { |income| income.status == "Realized" }.map(&:amount).sum
+        month.incomes.realized.total
       end
     @hash = Hash[@keys.zip(@month_incomes)].transform_keys { |key| key.to_sym }
 
@@ -41,7 +43,7 @@ class MonthsController < ApplicationController
       @last_month_comparison = [
         {
           name: "#{@last_month.name} #{@last_month.year}",
-          data: [["Income", @last_month.incomes.select { |income| income.status == "Realized" }.map(&:amount).sum], [ "Expenses", @last_month.expenses.select { |expense| expense.status == "Realized" }.map(&:amount).sum]],
+          data: [["Income", @last_month.incomes.realized.total], [ "Expenses", @last_month.expenses.realized.total]],
           stack: "#{@last_month.name} #{@last_month.year}"
         },
         {
