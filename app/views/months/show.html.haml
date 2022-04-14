@@ -4,9 +4,12 @@
 %h3
   Overall Data:
   = column_chart(@total_data, xtitle: "#{@month.name} #{@month.year} Data", ytitle: "Amount in dollars ($USD)", stacked: true)
--unless @last_month.nil?
+- if @last_month.nil? == false  
   Last Month's Comparison:
   = column_chart(@last_month_comparison, xtitle: "#{@last_month.name} #{@last_month.year} and #{@month.name} #{@month.year} Comparison Data" , ytitle: "Amount in dollars ($USD)", stacked: true)
+- if @month_array.length > 1
+  Income Summary:
+  = line_chart(@hash, ytitle: "Amount in dollars ($USD)")
 - if @month.cover_picture.attached?
   = image_tag @month.cover_picture, style: "width: 300px; height: 400px"
 %p

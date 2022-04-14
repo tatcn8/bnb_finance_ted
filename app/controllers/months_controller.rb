@@ -8,8 +8,25 @@ class MonthsController < ApplicationController
 
   def show
     @month = Month.find(params[:id])
-    @last_month = Month.where("user_id = ? AND (months.year < ?) OR (months.year = ? AND months.month < ?)", current_user.id, @month.year, @month.year, @month.month).last
+    @last_month = Month.where("user_id = ? AND ((months.year < ?) OR (months.year = ? AND months.month < ?))", current_user.id, @month.year, @month.year, @month.month).last
+    @month_array = Month.where("user_id = ? AND ((months.year < ?) OR (months.year = ? AND months.month < ?))", current_user.id, @month.year, @month.year, @month.month).last(12)
     
+    @keys = 
+      @month_array.map(&:name)
+    @month_incomes = 
+      @month_array.map.each do |month|
+        month.incomes.select { |income| income.status == "Realized" }.map(&:amount).sum
+      end
+    @hash = Hash[@keys.zip(@month_incomes)].transform_keys { |key| key.to_sym }
+
+    puts "*"*88
+    puts @last_month.nil?
+    puts "*"*88
+
+
+
+
+
     @realized_income = @month.incomes.select { |income| income.status == "Realized" }.map(&:amount).sum
     @realized_expense = @month.expenses.select { |expense| expense.status == "Realized" }.map(&:amount).sum
     @expected_income = @month.incomes.select { |income| income.status == "Expected" }.map(&:amount).sum
@@ -27,7 +44,6 @@ class MonthsController < ApplicationController
         stack: "Realized"
       }
     ]
-
     @last_month_comparison = [
       {
         name: "#{@last_month.name} #{@last_month.year}",
@@ -80,8 +96,6 @@ def destroy
 
   private
   def month_params
-
     params.require(:month).permit(:month, :year, :cover_picture, :status)
-
   end
 end
