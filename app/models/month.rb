@@ -7,6 +7,10 @@ class Month < ApplicationRecord
     validates :month, presence: true
     ARR = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
+    scope :prior_months_query, -> (user_id, year, month) { where("user_id = ? AND ((months.year < ?) OR (months.year = ? AND months.month < ?))", user_id, year, year, month) }
+    
+    scope :expected, -> { where(status: "Expected") }
+
     def name
         ARR[month-1]
     end

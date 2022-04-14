@@ -1,6 +1,7 @@
 class MonthsController < ApplicationController
   before_action :authenticate_user!
-  
+  # add a scope last_month and month_array...will take parameters...
+  # ..look up scope documentation...inside of month model
 
   def index
     @months = current_user.months.paginate(page: params[:page], per_page: 10)
@@ -8,8 +9,8 @@ class MonthsController < ApplicationController
 
   def show
     @month = Month.find(params[:id])
-    @last_month = Month.where("user_id = ? AND ((months.year < ?) OR (months.year = ? AND months.month < ?))", current_user.id, @month.year, @month.year, @month.month).last
-    @month_array = Month.where("user_id = ? AND ((months.year < ?) OR (months.year = ? AND months.month < ?))", current_user.id, @month.year, @month.year, @month.month).last(12)
+    @last_month = Month.prior_months_query(current_user.id, @month.year, @month.month).last
+    @month_array = Month.prior_months_query(current_user.id, @month.year, @month.month).last(12)
     
     @keys = 
       @month_array.map(&:name)
@@ -19,10 +20,10 @@ class MonthsController < ApplicationController
       end
     @hash = Hash[@keys.zip(@month_incomes)].transform_keys { |key| key.to_sym }
 
-    @realized_income = @month.incomes.select { |income| income.status == "Realized" }.map(&:amount).sum
-    @realized_expense = @month.expenses.select { |expense| expense.status == "Realized" }.map(&:amount).sum
-    @expected_income = @month.incomes.select { |income| income.status == "Expected" }.map(&:amount).sum
-    @expected_expense = @month.expenses.select { |expense| expense.status == "Expected" }.map(&:amount).sum
+    @realized_income = @month.incomes.realized.total
+    @realized_expense = @month.expenses.realized.total
+    @expected_income = @month.incomes.expected.total
+    @expected_expense = @month.expenses.expected.total
     
     @total_data =[
       {
