@@ -14,18 +14,10 @@ class MonthsController < ApplicationController
     @keys = 
       @month_array.map(&:name)
     @month_incomes = 
-      @month_array.map.each do |month|
+      @month_array.map do |month|
         month.incomes.select { |income| income.status == "Realized" }.map(&:amount).sum
       end
     @hash = Hash[@keys.zip(@month_incomes)].transform_keys { |key| key.to_sym }
-
-    puts "*"*88
-    puts @last_month.nil?
-    puts "*"*88
-
-
-
-
 
     @realized_income = @month.incomes.select { |income| income.status == "Realized" }.map(&:amount).sum
     @realized_expense = @month.expenses.select { |expense| expense.status == "Realized" }.map(&:amount).sum
@@ -44,18 +36,20 @@ class MonthsController < ApplicationController
         stack: "Realized"
       }
     ]
-    @last_month_comparison = [
-      {
-        name: "#{@last_month.name} #{@last_month.year}",
-        data: [["Income", @last_month.incomes.select { |income| income.status == "Realized" }.map(&:amount).sum], [ "Expenses", @last_month.expenses.select { |expense| expense.status == "Realized" }.map(&:amount).sum]],
-        stack: "#{@last_month.name} #{@last_month.year}"
-      },
-      {
-        name: "#{@month.name} #{@month.year}",
-        data: [["Income", @realized_income], ["Expenses", @realized_expense]],
-        stack: "#{@month.name} #{@month.year}"
-      }
-    ]
+    if @last_month
+      @last_month_comparison = [
+        {
+          name: "#{@last_month.name} #{@last_month.year}",
+          data: [["Income", @last_month.incomes.select { |income| income.status == "Realized" }.map(&:amount).sum], [ "Expenses", @last_month.expenses.select { |expense| expense.status == "Realized" }.map(&:amount).sum]],
+          stack: "#{@last_month.name} #{@last_month.year}"
+        },
+        {
+          name: "#{@month.name} #{@month.year}",
+          data: [["Income", @realized_income], ["Expenses", @realized_expense]],
+          stack: "#{@month.name} #{@month.year}"
+        }
+      ]
+    end
   end
 
   def new

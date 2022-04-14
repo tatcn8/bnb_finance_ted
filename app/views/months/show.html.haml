@@ -4,7 +4,7 @@
 %h3
   Overall Data:
   = column_chart(@total_data, xtitle: "#{@month.name} #{@month.year} Data", ytitle: "Amount in dollars ($USD)", stacked: true)
-- if @last_month.nil? == false  
+- if @last_month_comparison
   Last Month's Comparison:
   = column_chart(@last_month_comparison, xtitle: "#{@last_month.name} #{@last_month.year} and #{@month.name} #{@month.year} Comparison Data" , ytitle: "Amount in dollars ($USD)", stacked: true)
 - if @month_array.length > 1
