@@ -4,9 +4,6 @@ class MonthsController < ApplicationController
   
   def index
     @months = current_user.months.paginate(page: params[:page], per_page: 10)
-    puts "*"*88
-    puts ARR
-    puts "*"*88
   end
 
   def show
