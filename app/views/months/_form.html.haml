@@ -5,8 +5,7 @@
   %br
   %p
   = form.label :month
-  = form.select :month, ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-
+  = form.select :month, Month.options_for_select
   %br
   %p
   = form.label :year

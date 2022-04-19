@@ -1,10 +1,19 @@
 - content_for :title, "Past Data"
 %h1
-  For the month of #{@month.month} #{@month.year}
+  For the month of #{@month.name} #{@month.year}
+%h3
+  Overall Data:
+  = column_chart(@chart.total_data, xtitle: "#{@month.name} #{@month.year} Data", ytitle: "Amount in dollars ($USD)", stacked: true)
+  - if @last_month
+    Last Month's Comparison:
+    = column_chart(@chart.last_month_comparison, xtitle: "#{@last_month.name} #{@last_month.year} and #{@month.name} #{@month.year} Comparison Data" , ytitle: "Amount in dollars ($USD)", stacked: true)
+  - if @month_array.length > 1
+    Income Summary:
+    = line_chart(@chart.income_summary, ytitle: "Amount in dollars ($USD)")
 - if @month.cover_picture.attached?
   = image_tag @month.cover_picture, style: "width: 300px; height: 400px"
 %p
-  = link_to "Go Back", months_index_path
+  = link_to "Go Back", months_path
 %p
   = link_to "Edit this Month", edit_month_path(@month)
 %p
@@ -13,13 +22,13 @@
       turbo_confirm: "Are you sure?"                         |
     }                                                        |    
 
-= render "table", total: @month.sum_income_realized, header: 'Realized Income:', shows_earner: true, collection: @month.incomes.select { |income| income.status == "Realized" }
-= render "table", total: @month.sum_income_expected, header: 'Expected Income:', shows_earner: true, collection: @month.incomes.select { |income| income.status == "Expected" }
+= render "table", total: @month.sum_income_realized, header: 'Realized Income:', shows_earner: true, collection: @month.incomes.realized
+= render "table", total: @month.sum_income_expected, header: 'Expected Income:', shows_earner: true, collection: @month.incomes.expected
 
 %h6 Add an Income:
 = render 'incomes/form'
 %br
-= render "table", total: @month.sum_expense_realized, header: 'Realized Expenses:', shows_earner: false, collection: @month.expenses.select { |expense| expense.status == "Realized" }
-= render "table", total: @month.sum_expense_expected, header: 'Expected Expenses:', shows_earner: false, collection: @month.expenses.select { |expense| expense.status == "Expected" }
+= render "table", total: @month.sum_expense_realized, header: 'Realized Expenses:', shows_earner: false, collection: @month.expenses.realized
+= render "table", total: @month.sum_expense_expected, header: 'Expected Expenses:', shows_earner: false, collection: @month.expenses.expected
 %h6 Add an expense:
 = render 'expenses/form'

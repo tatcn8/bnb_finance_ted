@@ -1,13 +1,16 @@
 class MonthsController < ApplicationController
   before_action :authenticate_user!
-  
 
+  
   def index
-    @months = Month.paginate(page: params[:page], per_page: 10)
+    @months = current_user.months.paginate(page: params[:page], per_page: 10)
   end
 
   def show
-    @month = Month.find(params[:id])
+    @month = current_user.months.find(params[:id])
+    @chart = FinanceCharts.new(current_user, @month)
+    @last_month = current_user.months.prior_months_query(@month.year, @month.month).last
+    @month_array = current_user.months.prior_months_query(@month.year, @month.month).last(12)    
   end
 
   def new
@@ -48,8 +51,6 @@ def destroy
 
   private
   def month_params
-
     params.require(:month).permit(:month, :year, :cover_picture, :status)
-
   end
 end
