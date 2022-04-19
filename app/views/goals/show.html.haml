@@ -9,4 +9,8 @@
 %p
   Time remaining: #{@goal.years_to_save} years
 %br
-= link_to "Edit this Goal, although this aint working", edit_goal_path(@goal)
+%p
+  = link_to "Go Back", goals_path
+%p
+  = link_to "Edit this Goal", edit_goal_path(@goal)
+ 

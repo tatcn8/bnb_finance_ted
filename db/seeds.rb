@@ -27,54 +27,11 @@ end
 
 User.all.each do |user|
   [
-    {month: 1, year: 2021},
-    {month: 2, year: 2021},
-    {month: 3, year: 2021},
-    {month: 4, year: 2021},
-    {month: 5, year: 2021},
-    {month: 6, year: 2021},
-    {month: 7, year: 2021},
-    {month: 8, year: 2021},
-    {month: 9, year: 2021},
-    {month: 10, year: 2021},
-    {month: 11, year: 2021},
-    {month: 12, year: 2021},
-    {month: 1, year: 2022},
-    {month: 2, year: 2022},
-    {month: 3, year: 2022},
-    {month: 4, year: 2022},
-    {month: 5, year: 2022},
-    {month: 6, year: 2022},
-    {month: 7, year: 2022},
-    {month: 8, year: 2022},
-    {month: 9, year: 2022},
-    {month: 10, year: 2022},
-    {month: 11, year: 2022},
-    {month: 12, year: 2022}
-  ].each do |month|
-      Month.find_or_create_by!(month: month[:month], year: month[:year], user: user)
+    {title: "College Savings", initial_value: 2000, goal_value: 25000, years_to_save: 15},
+    {title: "Boat", initial_value: 2000, goal_value: 7500, years_to_save: 3},
+    {title: "House", initial_value: 20000, goal_value: 500000, years_to_save: 5}
+  ].each do |goal|
+      Goal.find_or_create_by!(title: goal[:title], initial_value: goal[:initial_value], goal_value: goal[:goal_value], years_to_save: goal[:years_to_save], user: user)
   end
 end
-
-
-15.times{
-  Month.all.each do |month|
-    [
-      {title: Faker::Restaurant.name, amount: Faker::Number.number(digits: 3)}
-    ].each do |expense|
-      Expense.find_or_create_by!(title: expense[:title], amount: expense[:amount], month: month, status: "Realized")
-    end
-  end
-}
-
-
-15.times{
-  Month.all.each do |month|
-    [
-      {title: Faker::Company.name, earner: Faker::Name.name, amount: Faker::Number.number(digits: 3)}
-    ].each do |income|
-      Income.find_or_create_by!(title: income[:title], earner: income[:earner], amount: income[:amount], month: month, status: "Realized")
-    end
-  end
-}
 

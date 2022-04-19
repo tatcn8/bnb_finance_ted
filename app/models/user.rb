@@ -6,4 +6,5 @@ class User < ApplicationRecord
   
   has_many :months
   has_one_attached :profile_photo
+  has_many :goals
 end
