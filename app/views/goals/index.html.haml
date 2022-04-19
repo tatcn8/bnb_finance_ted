@@ -1,0 +1,8 @@
+- content_for :title, "Goals"
+%h1 THIS IS THE INDEX PAGE
+%h1 Goals
+- @goals.each do |goal|
+  %li
+    = link_to "#{goal.title}", goal
+%br
+= link_to "Add New Goal -- although this aint working lol", new_goal_path

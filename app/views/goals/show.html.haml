@@ -1,0 +1,12 @@
+- content_for :title, "Goals"
+%h1 THIS IS THE SHOW PAGE
+%h4
+  Goal: #{@goal.title}
+%p
+  Amount saved: $#{@goal.initial_value}
+%p
+  Desired Amount: $#{@goal.goal_value}
+%p
+  Time remaining: #{@goal.years_to_save} years
+%br
+= link_to "Edit this Goal, although this aint working", edit_goal_path(@goal)
