@@ -1,2 +1,2 @@
 %h1 New Month
-= render "form", month: @month, arr: Hash[Month::MONTHS.zip(Month::NUMBERS)].transform_keys { |key| key.to_sym }
+= render "form", month: @month, arr: @month.options_for_select
