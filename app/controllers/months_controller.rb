@@ -7,49 +7,10 @@ class MonthsController < ApplicationController
   end
 
   def show
-    @month = Month.find(params[:id])
-    @last_month = Month.prior_months_query(current_user.id, @month.year, @month.month).last
-    @month_array = Month.prior_months_query(current_user.id, @month.year, @month.month).last(12)
-    
-    @keys = 
-      @month_array.map(&:name)
-    @month_incomes = 
-      @month_array.map do |month|
-        month.incomes.realized.total
-      end
-    @hash = Hash[@keys.zip(@month_incomes)].transform_keys { |key| key.to_sym }
-
-    @realized_income = @month.incomes.realized.total
-    @realized_expense = @month.expenses.realized.total
-    @expected_income = @month.incomes.expected.total
-    @expected_expense = @month.expenses.expected.total
-    
-    @total_data =[
-      {
-        name: "Expected",
-        data: [["Income", @expected_income], ["Expenses", @expected_expense]],
-        stack: "Expected"
-      },
-      {
-        name: "Realized",
-        data: [["Income", @realized_income], ["Expenses", @realized_expense]],
-        stack: "Realized"
-      }
-    ]
-    if @last_month
-      @last_month_comparison = [
-        {
-          name: "#{@last_month.name} #{@last_month.year}",
-          data: [["Income", @last_month.incomes.realized.total], [ "Expenses", @last_month.expenses.realized.total]],
-          stack: "#{@last_month.name} #{@last_month.year}"
-        },
-        {
-          name: "#{@month.name} #{@month.year}",
-          data: [["Income", @realized_income], ["Expenses", @realized_expense]],
-          stack: "#{@month.name} #{@month.year}"
-        }
-      ]
-    end
+    @month = current_user.months.find(params[:id])
+    @chart = FinanceCharts.new(current_user, @month)
+    @last_month = current_user.months.prior_months_query(@month.year, @month.month).last
+    @month_array = current_user.months.prior_months_query(@month.year, @month.month).last(12)    
   end
 
   def new

@@ -3,13 +3,13 @@
   For the month of #{@month.name} #{@month.year}
 %h3
   Overall Data:
-  = column_chart(@total_data, xtitle: "#{@month.name} #{@month.year} Data", ytitle: "Amount in dollars ($USD)", stacked: true)
-  - if @last_month_comparison
+  = column_chart(@chart.total_data, xtitle: "#{@month.name} #{@month.year} Data", ytitle: "Amount in dollars ($USD)", stacked: true)
+  - if @last_month
     Last Month's Comparison:
-    = column_chart(@last_month_comparison, xtitle: "#{@last_month.name} #{@last_month.year} and #{@month.name} #{@month.year} Comparison Data" , ytitle: "Amount in dollars ($USD)", stacked: true)
+    = column_chart(@chart.last_month_comparison, xtitle: "#{@last_month.name} #{@last_month.year} and #{@month.name} #{@month.year} Comparison Data" , ytitle: "Amount in dollars ($USD)", stacked: true)
   - if @month_array.length > 1
     Income Summary:
-    = line_chart(@hash, ytitle: "Amount in dollars ($USD)")
+    = line_chart(@chart.income_summary, ytitle: "Amount in dollars ($USD)")
 - if @month.cover_picture.attached?
   = image_tag @month.cover_picture, style: "width: 300px; height: 400px"
 %p
