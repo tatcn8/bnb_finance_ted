@@ -32,7 +32,7 @@ class Month < ApplicationRecord
         sum_items(expenses, "Expected")
     end
 
-    def options_for_select
+    def self.options_for_select
       Hash[MONTHS.zip(NUMBERS)].transform_keys { |key| key.to_sym }
     end
 
