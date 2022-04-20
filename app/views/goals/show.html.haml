@@ -1,16 +1,23 @@
 - content_for :title, "Goals"
-%h1 THIS IS THE SHOW PAGE
-%h4
-  Goal: #{@goal.title}
+%h2
+  #{@goal.title} 
+%br
 %p
   Amount saved: $#{@goal.initial_value}
 %p
   Desired Amount: $#{@goal.goal_value}
 %p
   Time remaining: #{@goal.years_to_save} years
+%p
+  Amount left to save: (work some magic)
 %br
 %p
   = link_to "Go Back", goals_path
 %p
   = link_to "Edit this Goal", edit_goal_path(@goal)
+%p
+  = link_to "Delete this Goal", goal_path(@goal), data: { |
+      turbo_method: :delete,                                 |
+      turbo_confirm: "Are you sure?"                         |
+    }                                                        |    
  
