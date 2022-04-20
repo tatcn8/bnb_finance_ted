@@ -23,15 +23,13 @@
         %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
       .modal-body
         %p
-          \-Sign up -&gt; Start entering your past data (use your bank/credit card statements to find your expenses)
+          \-Sign up -&gt; Start entering your past data (pro tip: reference your bank/credit card statements to find your usual expenses)
         %p
           \-Evaluate the past data -&gt; what areas surpise you? Where are you spending more money than you thought?
         %p
-          \-Enter future data -&gt; give your best guess (using the past data as a model) to your upcoming income/expenses
+          \-Enter your expected data -&gt; give your best guess (using the past data as a model) to your upcoming income/expenses
         %p
-          \-Evaluate the future data -&gt; are you able to pay all your bills? If so, great! Start planning how much you can save/where those savings dollars will go
-        %p
-          \-Evaluate the future data -&gt; are you able to pay all your bills? If not, no big deal! Start planning what expenses you can eliminate and/or how you can earn more money
+          \-Evaluate the future data -&gt; are you able to pay all your bills? If so, great! Head over to the goals section and make some plans for your excess cash. If not, no big deal! Start planning what expenses you can eliminate and/or how you can earn more income, in order to start winning with money!
       .modal-footer
         %button.btn.btn-secondary{"data-bs-dismiss" => "modal", :type => "button"} Close
 %br
@@ -48,20 +46,21 @@
         %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
       .modal-body
         %p
-          \-The ultimate roadmap to financial freedom can be found via
-          = succeed "," do
-            %a{:href => "https://www.ramseysolutions.com/"}
-        and his team at Ramsey Solutions
-      = succeed "," do
+          \-The ultimate roadmap to financial freedom can be found via 
+          = link_to "Dave Ramsey", "https://www.ramseysolutions.com/", target: "_blank"
+          and his team at Ramsey Solutions.
+          
         %p
-          \-Listen to his
-          = succeed "," do
-            %a{:href => "https://open.spotify.com/show/5exfRPDNCBHmntEkJrlLmX"}
-      = succeed "," do
-        %a{:href => "https://www.amazon.com/Total-Money-Makeover-Classic-Financial/dp/1595555277/ref=sr_1_1?crid=2VO2RBJ3V6EFV=total+money+makeover=1646844863=total+mon%2Caps%2C109=8-1"}
-    , and come up with a plan to start winning with money
-  %p
-    \-Check out this
-    = succeed "," do
-      %a{:href => "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"}
-  (it does not take that much money each month to add up to ALOT OF MONEY later!)
+          \-Listen to his 
+          = link_to "podcast", "https://open.spotify.com/show/5exfRPDNCBHmntEkJrlLmX", target: "_blank"
+          on Spotify.  
+        %p
+          \-Read some of his 
+          = link_to "books,", "https://www.amazon.com/Total-Money-Makeover-Classic-Financial/dp/1595555277/ref=sr_1_1?crid=2VO2RBJ3V6EFV=total+money+makeover=1646844863=total+mon%2Caps%2C109=8-1", target: "_blank"
+          and come up with a plan to start winning with money.
+        %p
+          \-Remember to stay very far away from places 
+          = link_to "like this.", "https://opensea.io/", target: "_blank"
+      .modal-footer
+        %button.btn.btn-secondary{"data-bs-dismiss" => "modal", :type => "button"} Close
+          

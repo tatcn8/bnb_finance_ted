@@ -1,15 +1,17 @@
 - content_for :title, "Goals"
 %h2
   #{@goal.title} 
-%br
+%p
+%p
+  Goal Amount: $#{@goal.goal_value}
 %p
   Amount saved: $#{@goal.initial_value}
 %p
-  Desired Amount: $#{@goal.goal_value}
+  Amount left to save: $#{@goal.amount_left_to_save} 
 %p
   Time remaining: #{@goal.years_to_save} years
-%p
-  Amount left to save: (work some magic)
+%h5 
+  Need to save $#{@goal.amount_per_month} each month to reach your goal!
 %br
 %p
   = link_to "Go Back", goals_path
