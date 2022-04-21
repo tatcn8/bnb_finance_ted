@@ -52,6 +52,9 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem 'will_paginate'
 gem 'will_paginate-bootstrap4'
 gem "chartkick"
+gem "stimulus-rails"
+
+
 
 
 # Use Sass to process CSS
