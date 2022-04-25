@@ -5,9 +5,9 @@
     = link_to "#{month.name} #{month.year}", month
 %br/
 = link_to "Add New Month", new_month_path
+%p
+  = link_to "Home", root_path
 %br/
-.month_photo
-  = image_tag("dave_rules1.jpg", :alt => "success", :class => "dave")
 %br/
 .paginate
   = will_paginate @months, renderer: WillPaginate::ActionView::BootstrapLinkRenderer

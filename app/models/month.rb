@@ -41,4 +41,3 @@ class Month < ApplicationRecord
         items.select{ |item| item.status == status }.map(&:amount).sum
     end
 end
-

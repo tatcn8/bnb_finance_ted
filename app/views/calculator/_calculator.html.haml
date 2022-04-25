@@ -1,0 +1,12 @@
+%div{"data-controller" => "calculator"}
+  %div
+    Starting Balance:
+    %input{"data-target" => "calculator.principal"}/
+  %div
+    Anticipated Interest Rate:
+    %input{"data-target" => "calculator.interest"}/
+  %div
+    Years to Save:
+    %input{"data-target" => "calculator.years"}/
+  %button{"data-action" => "click->calculator#log"} Calculate
+  %h5{"data-target" => "calculator.amount"} The amount you will have is:

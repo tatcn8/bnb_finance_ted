@@ -1,0 +1,25 @@
+- content_for :title, "Goals"
+%h2
+  #{@goal.title} 
+%p
+%p
+  Goal Amount: $#{@goal.goal_value}
+%p
+  Amount saved: $#{@goal.initial_value}
+%p
+  Amount left to save: $#{@goal.amount_left_to_save} 
+%p
+  Time remaining: #{@goal.years_to_save} years
+%h5 
+  Need to save $#{@goal.amount_per_month} each month to reach your goal!
+%br
+%p
+  = link_to "Go Back", goals_path
+%p
+  = link_to "Edit this Goal", edit_goal_path(@goal)
+%p
+  = link_to "Delete this Goal", goal_path(@goal), data: { |
+      turbo_method: :delete,                                 |
+      turbo_confirm: "Are you sure?"                         |
+    }                                                        |    
+ 

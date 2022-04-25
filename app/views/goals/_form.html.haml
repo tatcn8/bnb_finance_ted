@@ -1,0 +1,20 @@
+= form_with model: goal do |form|
+  %p
+  = form.label :title 
+  = form.text_field :title, placeholder: "Enter goal name..."
+  %br
+  %p
+  = form.label :initial_value
+  = form.text_field :initial_value, placeholder: "Amount already saved..."
+  %br
+  %p
+  = form.label :goal_value
+  = form.text_field :goal_value, placeholder: "Total amount needed..."
+  %br
+  %p
+  = form.label :years_to_save
+  = form.text_field :years_to_save, placeholder: "Number of years to save..."
+  %br
+  %div
+    = form.submit
+
