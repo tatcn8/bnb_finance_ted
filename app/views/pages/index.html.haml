@@ -4,11 +4,11 @@
     %h1 Welcome
     %h4 We are glad you are here
   .homepage_content
-    %p
-      \-New here? Check out our  #{link_to "About", about_path} page to learn how to use the site
-  %br/
-  .homepage_content1
-    %p
-      \-Come here often? Then sign in and rock and roll!
+    %ul
+    %li
+      New here? Check out our  #{link_to "About", about_path} page to learn how to use the site
+    %br
+    %li
+      Come here often? Then sign in and rock and roll!
   .home_photo
     = image_tag("homepage_photo.jpg", :alt => "success", :class => "moneychick")
