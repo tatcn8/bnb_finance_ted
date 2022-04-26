@@ -13,7 +13,6 @@ export default class extends Controller {
         principal = newPrincipal
         amount = parseFloat(principal).toFixed(2)      
      }
-     console.log(principal,'works')
      this.targets.find("amount").innerHTML = "The amount you will have is $" + amount
     }
   }
