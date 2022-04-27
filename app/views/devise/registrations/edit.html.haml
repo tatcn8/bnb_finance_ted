@@ -31,6 +31,18 @@
     %i (we need your current password to confirm your changes)
     %br/
     = f.password_field :current_password, autocomplete: "current-password"
+  %p
+    = f.label :display_overall 
+    %i (this will display the overall data graph)
+    = f.select :display_overall, ["True", "False"]
+  .p
+    = f.label :display_last_month
+    %i (this will display the last month comparison graph)
+    = f.select :display_last_month, ["True", "False"]
+  .p
+    = f.label :display_income_summary
+    %i (this will display the income summary graph)
+    = f.select :display_income_summary, ["True", "False"]
   %div
     =f.label :profile_photo
     %br
@@ -42,3 +54,4 @@
 %p
   Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
 = link_to "Back", :back
+
