@@ -9,20 +9,16 @@ Trestle.resource(:expenses) do
   end
   
   form dialog: true do |expense|
-    if expense
-      hidden_field :month_id
-    else
-      select :month_id, month.all
-    end
-  
     text_field :title
     text_field :amount
     select :status, FinanceStatus::VALID_STATUSES
+    collection_select :month_id, Month.all, :id, :month
     
   end
   # Customize the table columns shown on the index view.
   #
   table do
+    column :month
     column :title
     column :amount
     column :status
