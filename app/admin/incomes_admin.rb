@@ -13,6 +13,7 @@ Trestle.resource(:incomes) do
   # Customize the table columns shown on the index view.
   #
   table do
+    column :month
     column :title
     column :amount
     column :earner
@@ -25,16 +26,11 @@ Trestle.resource(:incomes) do
   # Customize the form fields shown on the new/edit views.
   #
   form dialog: true do |income|
-    if income
-      hidden_field :month_id
-    else
-      select :month_id, month.all
-    end
-  
     text_field :title
     text_field :amount
     text_field :earner
     select :status, FinanceStatus::VALID_STATUSES
+    collection_select :month_id, Month.all, :id, :month
   end
   # form do |income|
   #   text_field :name
