@@ -2,12 +2,13 @@
 %h1
   For the month of #{@month.name} #{@month.year}
 %h3
-  Overall Data:
-  = column_chart(@chart.total_data, xtitle: "#{@month.name} #{@month.year} Data", ytitle: "Amount in dollars ($USD)", stacked: true)
-  - if @last_month
+  - if @overall_display == true
+    Overall Data:
+    = column_chart(@chart.total_data, xtitle: "#{@month.name} #{@month.year} Data", ytitle: "Amount in dollars ($USD)", stacked: true)
+  - if @last_month && @last_month_display == true
     Last Month's Comparison:
     = column_chart(@chart.last_month_comparison, xtitle: "#{@last_month.name} #{@last_month.year} and #{@month.name} #{@month.year} Comparison Data" , ytitle: "Amount in dollars ($USD)", stacked: true)
-  - if @month_array.length > 1
+  - if @month_array.length > 1 && @income_summary_display == true
     Income Summary:
     = line_chart(@chart.income_summary, ytitle: "Amount in dollars ($USD)")
 - if @month.cover_picture.attached?
