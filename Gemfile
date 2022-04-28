@@ -53,7 +53,6 @@ gem 'will_paginate'
 gem 'will_paginate-bootstrap4'
 gem "chartkick"
 gem "stimulus-rails"
-gem "httparty"
 
 
 
