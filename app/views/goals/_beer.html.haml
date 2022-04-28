@@ -1,0 +1,6 @@
+%div{"data-controller" => "beer"}
+  %div
+    Enter your city:
+    %input{"data-target" => "beer.city", placeholder: "your city..."}/
+  %button{"data-action" => "click->beer#formSubmit"} Submit
+  %h5{"data-target" => "beer.entry"} 
