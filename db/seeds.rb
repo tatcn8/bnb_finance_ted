@@ -24,14 +24,24 @@ require 'faker'
   end
 end
 
-
-User.all.each do |user|
-  [
-    {title: "College Savings", initial_value: 2000, goal_value: 25000, years_to_save: 15},
-    {title: "Boat", initial_value: 2000, goal_value: 7500, years_to_save: 3},
-    {title: "House", initial_value: 20000, goal_value: 500000, years_to_save: 5}
-  ].each do |goal|
-      Goal.find_or_create_by!(title: goal[:title], initial_value: goal[:initial_value], goal_value: goal[:goal_value], years_to_save: goal[:years_to_save], user: user)
+15.times{
+  Month.all.each do |month|
+    [
+      {title: Faker::Company.name, earner: Faker::Name.name, amount: Faker::Number.number(digits: 3)}
+    ].each do |income|
+      Income.find_or_create_by!(title: income[:title], earner: income[:earner], amount: income[:amount], month: month, status: "Expected")
+      Income.find_or_create_by!(title: income[:title], earner: income[:earner], amount: income[:amount], month: month, status: "Realized")
+    end
   end
-end
+}
 
+15.times{
+  Month.all.each do |month|
+    [
+      {title: Faker::Restaurant.name, amount: Faker::Number.number(digits: 3)}
+    ].each do |expense|
+      Expense.find_or_create_by!(title: expense[:title], amount: expense[:amount], month: month, status: "Expected")
+      Expense.find_or_create_by!(title: expense[:title], amount: expense[:amount], month: month, status: "Realized")
+    end
+  end
+}
