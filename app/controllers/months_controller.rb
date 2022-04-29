@@ -7,11 +7,6 @@ class MonthsController < ApplicationController
   end
 
   def show
-    @overall_display = current_user.display_overall
-    @last_month_display = current_user.display_last_month
-    @income_summary_display = current_user.display_income_summary
-
-
     @month = current_user.months.find(params[:id])
     @chart = FinanceCharts.new(current_user, @month)
     @last_month = current_user.months.prior_months_query(@month.year, @month.month).last

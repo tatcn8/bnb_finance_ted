@@ -33,16 +33,16 @@
     = f.password_field :current_password, autocomplete: "current-password"
   %p
     = f.label :display_overall 
-    %i (this will display the overall data graph)
-    = f.select :display_overall, ["true", "false"]
+    %i (check to display the overall data graph)
+    = f.check_box :display_overall, checked: true
   .p
     = f.label :display_last_month
-    %i (this will display the last month comparison graph)
-    = f.select :display_last_month, ["true", "false"]
+    %i (check to display the last month comparison graph)
+    = f.check_box :display_last_month, checked: true
   .p
     = f.label :display_income_summary
-    %i (this will display the income summary graph)
-    = f.select :display_income_summary, ["true", "false"]
+    %i (check to display the income summary graph)
+    = f.check_box :display_income_summary, checked: true
   %div
     =f.label :profile_photo
     %br
