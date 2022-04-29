@@ -1,0 +1,9 @@
+%div
+  %h4 Saving money is hard work. You deserve a beer.
+  %p Enter your location and we'll find a brewery near you!
+  %div{"data-controller" => "beer"}
+    %div
+      Enter your city:
+      %input{"data-target" => "beer.city", placeholder: "your city..."}/
+    %button{"data-action" => "click->beer#formSubmit"} Submit
+    %h5{"data-target" => "beer.entry"} 
