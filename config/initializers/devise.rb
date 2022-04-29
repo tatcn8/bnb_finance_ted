@@ -33,11 +33,7 @@ Devise.setup do |config|
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
-<<<<<<< HEAD
   config.parent_controller = 'TurboController'
-=======
-
->>>>>>> added the ability for user's to turn individual charts on or off in user settings
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
@@ -291,7 +287,6 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-<<<<<<< HEAD
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
@@ -324,8 +319,6 @@ Devise.setup do |config|
 
   # ==> Configuration for :registerable
   config.navigational_formats = ['*/*', :html, :turbo_stream]
-=======
->>>>>>> added the ability for user's to turn individual charts on or off in user settings
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
