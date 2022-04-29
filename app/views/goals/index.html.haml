@@ -8,6 +8,8 @@
 = link_to "Add New Goal", new_goal_path
 %p
   = link_to "Home", root_path
-= render "calculator/calculator"
-%div
-= render "beer"
+.row
+  .col-md-6
+    = render "calculator/calculator"
+  .col-md-6
+    = render "beer"
