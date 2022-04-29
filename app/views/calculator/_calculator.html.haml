@@ -1,15 +1,16 @@
+%h4 Compound Interest Calculator:
 %div{"data-controller" => "calculator"}
   %div
     Starting Balance:
-    %input{"data-target" => "calculator.principal"}/
+    %input{"data-target" => "calculator.principal", placeholder: "starting balance..."}/
   %div
     Annual Contribution:
-    %input{"data-target" => "calculator.annual"}/
+    %input{"data-target" => "calculator.annual", placeholder: "annual contribution..."}/
   %div
     Anticipated Interest Rate:
-    %input{"data-target" => "calculator.interest"}/
+    %input{"data-target" => "calculator.interest", placeholder: "estimated interest rate..."}/
   %div
     Years to Save:
-    %input{"data-target" => "calculator.years"}/
+    %input{"data-target" => "calculator.years", placeholder: "years to save..."}/
   %button{"data-action" => "click->calculator#log"} Calculate
   %h5{"data-target" => "calculator.amount"} The amount you will have is:
