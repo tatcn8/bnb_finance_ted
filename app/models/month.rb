@@ -9,7 +9,7 @@ class Month < ApplicationRecord
     NUMBERS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
     scope :prior_months_query, -> (year, month) { where("((months.year < ?) OR (months.year = ? AND months.month < ?))", year, year, month) }
-    
+
     scope :expected, -> { where(status: "Expected") }
 
     def name
