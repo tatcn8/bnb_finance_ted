@@ -3,6 +3,11 @@ class GoalsController < ApplicationController
   
   def index
     @goals = current_user.goals
+
+    respond_to do |format|
+      format.html
+      format.csv{ send_data @goals.to_csv }
+    end
   end
 
   def show

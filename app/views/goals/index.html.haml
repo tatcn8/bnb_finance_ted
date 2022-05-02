@@ -4,10 +4,11 @@
   - @goals.each do |goal|
     %li
       = link_to "#{goal.title}", goal
-%br
+= link_to "Download Goal Summary", goals_path(format: :csv)
+%p
 = link_to "Add New Goal", new_goal_path
 %p
-  = link_to "Home", root_path
+= link_to "Home", root_path
 .row
   .col-md-6
     = render "calculator/calculator"

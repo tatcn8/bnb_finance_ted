@@ -15,5 +15,15 @@ class Goal < ApplicationRecord
     (goal_value - initial_value)/(years_to_save * 12)
   end
 
+  def self.to_csv
+    attributes = %w{ title initial_value goal_value years_to_save }
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |goals|
+        csv << goals.attributes.values_at(*attributes)
+      end 
+    end
+  end
 
 end
