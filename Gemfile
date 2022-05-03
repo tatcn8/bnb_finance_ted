@@ -54,6 +54,7 @@ gem 'will_paginate-bootstrap4'
 gem "chartkick"
 gem "stimulus-rails"
 gem "rspec", "~> 3.0"
+gem "rspec-rails"
 
 
 
