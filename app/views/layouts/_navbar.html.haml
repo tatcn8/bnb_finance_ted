@@ -16,6 +16,8 @@
           %li.nav-item
             = link_to "Your Goals", goals_path, class: "nav-link"
           %li.nav-item
+            = link_to "Tools", pages_path, class: "nav-link"
+          %li.nav-item
             = link_to "Edit User Profile", edit_user_registration_path, class: "nav-link"
       %ul.navbar-nav.ms-auto
         -if user_signed_in?
