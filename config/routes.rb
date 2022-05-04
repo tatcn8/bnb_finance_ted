@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   
   resource  :about, only: [:show], controller: "about" 
   resources  :goals
+  resource :pages, only: [:show], controller: "pages"
   
   resources :months do
     resources :expenses

@@ -1,0 +1,14 @@
+%div
+  %h4 Let's calculate some payments:
+  %div{"data-controller" => "loan"}
+    %div
+      Enter your loan balance:
+      %input{"data-target" => "loan.balance", placeholder: "loan balance..."}/
+    %div
+      Enter your interest rate:
+      %input{"data-target" => "loan.rate", placeholder: "interest rate..."}/
+    %div
+      Enter the months remaining:
+      %input{"data-target" => "loan.periods", placeholder: "months remaining..."}/
+    %button{"data-action" => "click->loan#formSubmit"} Submit
+    %h5{"data-target" => "loan.response"} 
